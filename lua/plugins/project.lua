@@ -3,6 +3,7 @@ return {
   opts = {
     projects = { -- define project roots
       "~/Documents/dev/*",
+      "~/.config/*",
     },
     picker = {
       type = "telescope", -- one of "telescope", "fzf-lua", or "snacks"
@@ -11,6 +12,8 @@ return {
   init = function()
     -- enable saving the state of plugins in the session
     vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+    vim.keymap.set("n", "<leader>pp", "<cmd>:NeovimProjectDiscover<cr>", { desc = "Pick Project" }) -- open project picker
+    vim.keymap.set("n", "<leader>ph", "<cmd>NeovimProjectHistory<cr>", { desc = "Project History" })
   end,
   dependencies = {
     { "nvim-lua/plenary.nvim" },
